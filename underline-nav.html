@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta liarset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    ul, li { list-style: none; padding: 0 }
+    li { cursor: pointer }
+
+    /* Underline Nav */
+    .nav {
+      /* li widths */
+      --li-1: 70px;
+      --li-2: 122px;
+      --li-3: 82px;
+      --li-4: 104px;
+      --li-5: 70.1px;
+      /* --li-6:  */
+
+      --gutter: 10%;
+
+      --underline-pos-1: 0;
+      --underline-pos-2: calc(var(--li-1) + var(--gutter));
+      --underline-pos-3: calc(var(--li-1) + var(--li-2) + var(--gutter) * 2);
+      --underline-pos-4: calc(var(--li-1) + var(--li-2) + var(--li-3) + var(--gutter) * 3);
+      --underline-pos-5: calc(var(--li-1) + var(--li-2) + var(--li-3) + var(--li-4) + var(--gutter) * 4);
+      /* --underline-pos-6: calc(var(--li-1) + var(--li-2) + var(--li-3) + var(--li-4) + var(--li-5) + var(--gutter) * 5); */
+    }
+
+    .nav ul {
+      position: relative;
+      display: flex;
+    }
+
+    .nav li + li {
+      margin-left: var(--gutter);
+    }
+
+    .underline {
+      /* Settings on page load*/
+      --pos: var(--underline-pos-1);
+      --current-li: var(--li-1);
+      bottom: 0;
+      height: 2px;
+      background-color: #fff;
+      transition: 1s ease 1s;
+
+      width: calc(var(--current-li));
+      position: absolute;
+      left: var(--pos);
+    }
+
+    .nav li:hover ~ .underline {
+      transition-delay: unset;
+    }
+    
+    .nav li:nth-child(1):hover ~ .underline {
+      --current-li: var(--li-1);
+      --pos: var(--underline-pos-1);
+    }
+    .nav li:nth-child(2):hover ~ .underline {
+      --current-li: var(--li-2);
+      --pos: var(--underline-pos-2);
+    }
+    .nav li:nth-child(3):hover ~ .underline {
+      --current-li: var(--li-3);
+      --pos: var(--underline-pos-3);
+    }
+    .nav li:nth-child(4):hover ~ .underline {
+      --current-li: var(--li-4);
+      --pos: var(--underline-pos-4);
+    }
+    .nav li:nth-child(5):hover ~ .underline {
+      --current-li: var(--li-5);
+      --pos: var(--underline-pos-5);
+    }
+  </style>
+
+</head>
+<body style="font-family: sans-serif; font-size: 36px; margin: 0">
+  <nav class="nav" style="padding: 10px; background-color: darkblue; color: white">
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+      <li>Fourth</li>
+      <li>Fifth</li>
+      <div class="underline"></div>
+    </ul>
+  </nav>
+</body>
+</html>
